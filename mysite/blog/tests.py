@@ -18,3 +18,8 @@ class PostViewTests(TestCase):
             reverse("post_detail", kwargs={"pk": 999999})
         )
         self.assertEqual(response.status_code, 404)
+
+    def test_hello_world(self):
+        response = self.client.get(reverse("hello_world"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Hello World")
