@@ -11,7 +11,8 @@ class PostViewTests(TestCase):
 
     def test_post_list_template(self):
         response = self.client.get(reverse("post_list"))
-        self.assertTemplateUsed(response, "blog/post_list.html")
+        self.assertTemplateUsed(response, "blog/index.html")
+        self.assertTemplateUsed(response, "blog/base.html")
 
     def test_post_detail_not_found(self):
         response = self.client.get(
