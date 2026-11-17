@@ -1,0 +1,39 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+{{ post.title }} - Backend Python EBAC
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8 card mb-4 mt-3 left top">
+            <div class="card-body">
+
+                <h1>{{ post.title }}</h1>
+
+                <p class="text-muted">
+                    {{ post.created_at }}
+                </p>
+
+                <div class="card-text">
+                    {{ post.content|linebreaks }}
+                </div>
+
+                <a href="{% url 'post_list' %}" class="btn btn-primary mt-3">
+                    Voltar para os posts
+                </a>
+
+            </div>
+        </div>
+
+        {% block sidebar %}
+        {% include "blog/sidebar.html" %}
+        {% endblock sidebar %}
+
+    </div>
+</div>
+
+{% endblock content %}
