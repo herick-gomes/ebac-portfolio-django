@@ -1,20 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "blog/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Detalhes do Post</title>
-</head>
+{% block title %}
+{{ post.title }} - Backend Python EBAC
+{% endblock title %}
 
-<body>
-    <h1>Detalhes do Post</h1>
+{% block content %}
 
-    <h2>{{ post }}</h2>
-    <p>ID: {{ post.pk }}</p>
+<div class="container">
+    <div class="row">
 
-    <a href="{% url 'post_list' %}">
-        Voltar para a lista
-    </a>
-</body>
+        <div class="col-md-8 card mb-4 mt-3 left top">
+            <div class="card-body">
 
-</html>
+                <h1>{{ post.title }}</h1>
+
+                <p class="text-muted">
+                    {{ post.created_at }}
+                </p>
+
+                <div class="card-text">
+                    {{ post.content|linebreaks }}
+                </div>
+
+                <a href="{% url 'post_list' %}" class="btn btn-primary mt-3">
+                    Voltar para os posts
+                </a>
+
+            </div>
+        </div>
+
+        {% block sidebar %}
+        {% include "blog/sidebar.html" %}
+        {% endblock sidebar %}
+
+    </div>
+</div>
+
+{% endblock content %}
